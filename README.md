@@ -1,4 +1,6 @@
-[![Stories in Ready](https://badge.waffle.io/marcbarbosa/mercadobitcoin.png?label=ready&title=Ready)](https://waffle.io/marcbarbosa/mercadobitcoin)
+[![npm](https://img.shields.io/npm/v/mercadobitcoin-v3.svg)](https://www.npmjs.com/package/mercadobitcoin-v3)
+[![GitHub issues](https://img.shields.io/github/issues/macmiranda/mercadobitcoin.svg)](https://github.com/macmiranda/mercadobitcoin/issues)
+[![license](https://img.shields.io/github/license/macmiranda/mercadobitcoin.svg)](http://spdx.org/licenses/MIT)
 
 
 #Mercado Bitcoin API client
@@ -38,7 +40,7 @@ You will need the following info: Chave, Código ([here](https://www.mercadobitc
 ```javascript
 var MercadoBitcoinTrade = require('mercadobitcoin-v3').MercadoBitcoinTrade;
 
-/ Credentials
+// Credentials
 var config = {  key    : 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
                 secret : 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
 };
