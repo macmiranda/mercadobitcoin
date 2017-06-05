@@ -2,8 +2,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/macmiranda/mercadobitcoin.svg)](https://github.com/macmiranda/mercadobitcoin/issues)
 [![license](https://img.shields.io/github/license/macmiranda/mercadobitcoin.svg)](http://spdx.org/licenses/MIT)
 
-
-#Mercado Bitcoin API client
+# Mercado Bitcoin API client
 [Mercado Bitcoin](https://www.mercadobitcoin.com.br) is a cryptocurrency exchange in Brazil. This module has been forked from marcbasbosa's module and modified to work with v3 of the Trade API.
 
 ## Install
