@@ -1,94 +1,65 @@
-var unirest = require('unirest');
+var unirest = require('unirest'),
     crypto  = require('crypto'),
     qs      = require('querystring');
 
-var ENDPOINT_API       = 'https://www.mercadobitcoin.com.br/api/',
-    ENDPOINT_TRADE_API = 'https://www.mercadobitcoin.com.br/tapi/';
+var BASE_URL		= 'https://www.mercadobitcoin.net',
+    API_PATH	       	= '/api/v1/',
+    TAPI_PATH	       	= '/tapi/v3/',
+    ENDPOINT_API       	= BASE_URL + API_PATH,
+    ENDPOINT_TRADE_API 	= BASE_URL + TAPI_PATH;
 
 
-var MercadoBitcoin = function (config) {
-  this.config = {
-    CURRENCY: config.currency
-  }
+var MercadoBitcoin = function () {
+  this.currency = 'BTC';
 }
 
 MercadoBitcoin.prototype = {
 
-  ticker: function (success) {
-    this.call('ticker', success);
-  },
-
-  orderBook: function (success) {
-    this.call('orderbook', success);
-  },
-
-  trades: function (success) {
-    this.call('trades', success);
-  },
-
-  call: function (method, success) {
-
-    var isLitecoin = this.config.CURRENCY === 'LTC';
+  get: function (method, currency, res) {
+    if (currency) {this.currency = currency;} 
+    var isLitecoin = currency === 'LTC';
 
     unirest.get(ENDPOINT_API + method + (isLitecoin ? '_litecoin' : ''))
     .headers('Accept', 'application/json')
     .end(function (response) {
-      success(JSON.parse(response.raw_body));
+      res(JSON.parse(response.raw_body));
     });
   }
 }
 
 
 var MercadoBitcoinTrade = function (config) {
-    this.config = {
-        KEY: config.key,
-        SECRET: config.secret,
-        PIN: config.pin
-    }
-};
+    this.key = config.key;
+    this.secret = config.secret;
+//    this.pin = config.pin;
+}
 
 MercadoBitcoinTrade.prototype = {
 
-  getInfo: function(success, error) {
-    this.call('getInfo', {}, success, error);
-  },
-
-  orderList: function (parameters, success, error) {
-    this.call('OrderList', parameters, success, error)
-  },
-
-  trade: function (parameters, success, error) {
-    this.call('Trade', parameters, success, error)
-  },
-
-  cancelOrder: function (parameters, success, error) {
-    this.call('CancelOrder', parameters, success, error)
-  },
-
-  call: function (method, parameters, success, error) {
+  execute: function (method, parameters, res) {
 
     var now = Math.round(new Date().getTime() / 1000);
-    var signature = crypto.createHmac('sha512', this.config.SECRET)
-                          .update(method + ':' + this.config.PIN + ':' + now)
-                          .digest('hex');
+    var params = new Object;
+    if (parameters) { params = parameters;}
+    params.tapi_method =  method;
+    params.tapi_nonce = now;
+    var url_params = qs.stringify(params);
+    console.log(url_params);
 
+    var signature = crypto.createHmac('sha512', this.secret)
+                          .update(TAPI_PATH + '?' + url_params)
+                          .digest('hex');
     unirest.post(ENDPOINT_TRADE_API)
-      .headers({'Key': this.config.KEY})
-      .headers({'Sign': signature})
-      .send(qs.stringify({'method': method, 'tonce': now}))
-      .send(qs.stringify(parameters))
+      .headers({'TAPI-ID': this.key})
+      .headers({'TAPI-MAC': signature})
+      .send(url_params)
       .end(function (response) {
-        if (response.body.success === 1 && success)
-          success(response.body.return);
-        else if (error)
-          error(response.body.error);
+	res(JSON.parse(response.raw_body));
       });
   }
-
 }
-
 
 module.exports = {
   MercadoBitcoin: MercadoBitcoin,
   MercadoBitcoinTrade: MercadoBitcoinTrade
-};
+}

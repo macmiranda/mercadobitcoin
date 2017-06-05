@@ -1,20 +1,20 @@
 {
-    "name": "mercadobitcoin",
-    "description": "Mercado Bitcoin API client",
+    "name": "mercadobitcoin-v3",
+    "description": "Mercado Bitcoin API client (TAPI v3)",
     "version": "0.0.4",
-    "homepage": "https://github.com/marcbarbosa/mercadobitcoin",
+    "homepage": "https://github.com/macmiranda/mercadobitcoin",
     "author": {
-        "name": "Marcelo Barbosa",
-        "email": "mbarbosa@gmail.com"
+        "name": "Marco Aurelio Miranda",
+        "email": "macmiranda@gmail.com"
     },
-    "main": "mercadobitcoin",
+    "main": "mercadobitcoin-v3",
     "files": ["mercadobitcoin.js"],
     "repository": {
         "type": "git",
-        "url": "git://github.com/marcbarbosa/mercadobitcoin.git"
+        "url": "git://github.com/macmiranda/mercadobitcoin.git"
     },
     "bugs": {
-        "url": "https://github.com/marcbarbosa/mercadobitcoin/issues"
+        "url": "https://github.com/macmiranda/mercadobitcoin/issues"
     },
     "keywords": ["bitcoin", "exchange", "api", "mercadobitcoin"],
     "dependencies": {
