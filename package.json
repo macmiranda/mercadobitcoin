@@ -8,7 +8,7 @@
         "email": "macmiranda@gmail.com"
     },
     "main": "mercadobitcoin-v3",
-    "files": ["mercadobitcoin.js"],
+    "files": ["mercadobitcoin-v3.js"],
     "repository": {
         "type": "git",
         "url": "git://github.com/macmiranda/mercadobitcoin.git"
