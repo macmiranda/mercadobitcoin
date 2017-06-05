@@ -1,7 +1,7 @@
 {
     "name": "mercadobitcoin-v3",
     "description": "Mercado Bitcoin API client (TAPI v3)",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "homepage": "https://github.com/macmiranda/mercadobitcoin",
     "author": {
         "name": "Marco Aurelio Miranda",
