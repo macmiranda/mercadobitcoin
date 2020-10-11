@@ -1,6 +1,7 @@
 [![npm](https://img.shields.io/npm/v/mercadobitcoin-v3.svg)](https://www.npmjs.com/package/mercadobitcoin-v3)
 [![GitHub issues](https://img.shields.io/github/issues/macmiranda/mercadobitcoin.svg)](https://github.com/macmiranda/mercadobitcoin/issues)
 [![license](https://img.shields.io/github/license/macmiranda/mercadobitcoin.svg)](http://spdx.org/licenses/MIT)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fmacmiranda%2Fmercadobitcoin.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fmacmiranda%2Fmercadobitcoin?ref=badge_shield)
 
 # Mercado Bitcoin API client
 [Mercado Bitcoin](https://www.mercadobitcoin.com.br) is a cryptocurrency exchange in Brazil. This module has been forked from marcbasbosa's module and modified to work with v3 of the Trade API.
@@ -63,3 +64,7 @@ mbt.execute('get_account_info', null, console.log);
 
 ### Donations are welcome!
 1HEqNnuxpBwJvtxzfT9758mfMVHzGzfWoK
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fmacmiranda%2Fmercadobitcoin.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fmacmiranda%2Fmercadobitcoin?ref=badge_large)
